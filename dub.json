@@ -1,7 +1,7 @@
 {
     "name": "prabhupada_calendar",
     "license": "boost 1.0",
-    "targetName": "Prabhupada_calendar",
+    "targetName": "Prabhupada_Calendar",
     "targetType": "executable",
     "targetPath": "bin",
     "stringImportPaths": ["views", "views/res", "views/res/i18n"],
