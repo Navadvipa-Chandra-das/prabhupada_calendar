@@ -1,6 +1,5 @@
 {
     "name": "prabhupada_calendar",
-    "version": "1.0.0",
     "license": "boost 1.0",
     "targetName": "Prabhupada_calendar",
     "targetType": "executable",
