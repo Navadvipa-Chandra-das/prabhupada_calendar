@@ -684,7 +684,7 @@ class Класс_Основной_Виджет : FrameLayout
     
     _Конвертилка_переводчик._Выпадающий_список_Наряд_программы.selectedItemIndex = 1;
     
-    // Сохраняем для примера 
+    // Сохраняем для примера. 
     // showChild(_cupPage.id, Visibility.Invisible, true);
     // backgroundImageId = "tx_fabric.tiled";
   }
