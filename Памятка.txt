@@ -26,6 +26,6 @@ git remote rm destination origin
 git remote rename origin destination
 
 # запрос изменений на удалённом сервере
-git pull prabhupada_calendar master -m "так надо"
+git pull prabhupada_calendar master
 # удаление файла из репозитория
 git rm test.txt
