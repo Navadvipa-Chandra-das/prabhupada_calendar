@@ -31,4 +31,4 @@ bin/
 # рабочие файлы календаря
 *69.*
 # Настройки для  DLangIDE
-.settings
+*.settings

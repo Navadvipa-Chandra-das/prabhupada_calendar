@@ -1,0 +1,31 @@
+#!/bin/bash
+#dub init ~/prg/D/Prabhupada/TestInit "dlangui" "dlangide"  --format=sdl
+dub init ~/prg/D/Prabhupada/TestInit dlangui dlangide --format=sdl
+dub fetch dlangide && dub run --build=release dlangide
+git init
+git config --global user.email "navadwip@rambler.ru"
+git config --global user.name "Navadvipa-Chandra-das"
+git add .
+git status
+git commit -m " Ура! Добавили! Харе Кришна!"
+git tag v1.0.1
+# отправляем изменения на github !
+git push
+
+# второй способ. Он использовался!
+git remote add prabhupada_calendar https://github.com/Navadvipa-Chandra-das/prabhupada_calendar.git
+# проверка
+git remote -v
+git push -u prabhupada_calendar master
+# получаем связанные репозитории - локальная master и удаленная origin
+# обновить метки на удаленном репозитории - это столь нужные нам версии пакета для DUB
+git push --tags
+# удаляем, если надо destination и origin
+git remote rm destination origin
+# переименовываем, если надо origin на destination
+git remote rename origin destination
+
+# запрос изменений на удалённом сервере
+git pull prabhupada_calendar master -m "так надо"
+# удаление файла из репозитория
+git rm test.txt
