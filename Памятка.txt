@@ -2,13 +2,20 @@
 #dub init ~/prg/D/Prabhupada/TestInit "dlangui" "dlangide"  --format=sdl
 dub init ~/prg/D/Prabhupada/TestInit dlangui dlangide --format=sdl
 dub fetch dlangide && dub run --build=release dlangide
+
+// один раз
 git init
 git config --global user.email "navadwip@rambler.ru"
 git config --global user.name "Navadvipa-Chandra-das"
+
+// много раз
 git add .
 git status
 git commit -m " Ура! Добавили! Харе Кришна!"
+# добавление метки
 git tag v1.0.1
+# удаление метки
+git tag -d v1.0.1
 # отправляем изменения на github !
 git push
 

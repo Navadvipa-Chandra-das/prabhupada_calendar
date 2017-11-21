@@ -12,7 +12,7 @@ import dlangui.dialogs.dialog;
 const string ИМЯ_ПРОГРАММЫ = "ИМЯ_ПРОГРАММЫ"c;
 
 enum Коды_действий : size_t {
-  Код_действия_работаем_по_Стахановски = 0
+  Код_действия_работаем_по_Стахановски = 5500
 }
 
 enum Коды_нарядов : size_t {
@@ -50,7 +50,7 @@ class Класс_Пожертвование : HorizontalLayout
     // "nizhnyaya-navadvipa.ru"d не будет переводиться на разные языки
     // "nizhnyaya-navadvipa.ru"с напротив - будет переводиться на разные языки, что ни к чему
     _Текст_Сайт_Нижней_Навадвипы   = new TextWidget( null, "nizhnyaya-navadvipa.ru"d );
-    
+
     _Герб_Нижней_Навадвипы = new ImageWidget( "Герб_Нижней_Навадвипы", "gerb_nizhney_navadvipy");
     
     _Адрес_Нижней_Навадвипы_английскими_буквами = new UrlImageTextButton( null, "nizhnyaya-navadvipa.ru"d, "http://nizhnyaya-navadvipa.ru/"c );
@@ -93,8 +93,9 @@ class Класс_О_программе : VerticalLayout
 
     гл_Автор_программы.addChild( new TextWidget( "Автор_программы"c, UIString.fromId( "Автор_программы"c ) ) );
     гл_Автор_программы.addChild( new TextWidget( "АВТОР_ПРОГРАММЫ"c, UIString.fromId( "АВТОР_ПРОГРАММЫ"c ) ).styleId( "POPUP_MENU" ) );
-
+    
     addChild( гл_Автор_программы );
+    addChild( new UrlImageTextButton( "Почта_автора"c, "navadvipa.chandra.das@nizhnyaya-navadvipa.ru"d, "mailto:navadvipa.chandra.das@nizhnyaya-navadvipa.ru"c ) );
 
     auto гл_Лицензия = new HorizontalLayout();
 
@@ -176,6 +177,11 @@ class Класс_Конвертилка_переводчик : VerticalLayout
 
     _Действие_Работаем_по_Стахановски = new Action( Коды_действий.Код_действия_работаем_по_Стахановски, "Есть работать по Стахановски!"c, "dialog-ok-apply", KeyCode.KEY_O, KeyFlag.Control);
     _Кнопка_выполнения                = new ImageTextButton( _Действие_Работаем_по_Стахановски );
+    //_Кнопка_выполнения                = new ImageTextButton( "Кнопка выполнения", "dialog-ok-apply"c, "Есть работать по Стахановски!"c );
+
+    _Текст_Где_скачать_GCal = new TextWidget( null, UIString.fromId( "Где_скачать_GCal"c ) );
+    //_Адрес_GCal = new UrlImageTextButton( null, "krishnadays.com"d,    "http://krishnadays.com/"c );
+    _Адрес_GCal = new UrlImageTextButton( null, "krishnadays.com"d,    "krishnadays.com"c );
 
     auto гл_Входной_файл = new HorizontalLayout();
     гл_Входной_файл.margins( 4 );
@@ -239,6 +245,11 @@ class Класс_Конвертилка_переводчик : VerticalLayout
 
     вл_Как_делаем.addChild( _Галочка_кнопка_Удалять_пустые_дни_окончания_поста );
 
+    _Галочка_кнопка_Удалять_комментарий_Экадаши = new CheckBox( null, "УДАЛЯТЬ_КОММЕНТАРИЙ_ЭКАДАШИ"c );
+    _Галочка_кнопка_Удалять_комментарий_Экадаши.checked = true;
+
+    вл_Как_делаем.addChild( _Галочка_кнопка_Удалять_комментарий_Экадаши );
+
     гл_Что_делаем.addChild( вл_Как_делаем );
 
     addChild( гл_Что_делаем );
@@ -247,14 +258,18 @@ class Класс_Конвертилка_переводчик : VerticalLayout
 
     гл_Работать_по_Стахановски.addChild( _Текст_Работать_по_Стахановски );
     гл_Работать_по_Стахановски.addChild( _Кнопка_выполнения );
-
+    
+    // можно и без onAction, но через Action интереснее!
     //_Кнопка_выполнения.click = &Работаем_по_Стахановски;
     
     addChild( гл_Работать_по_Стахановски );
 
-    onAction = delegate( Widget source, const Action a ) {
-      return Работаем_по_Стахановски( null );
-    };
+    auto гл_Где_скачать_GCal = new HorizontalLayout();
+
+    гл_Где_скачать_GCal.addChild( _Текст_Где_скачать_GCal );
+    гл_Где_скачать_GCal.addChild( _Адрес_GCal );
+
+    addChild( гл_Где_скачать_GCal );
   }
   
   @property Язык_программы( Коды_языков Язык ) {
@@ -311,6 +326,9 @@ class Класс_Конвертилка_переводчик : VerticalLayout
   TextWidget _Текст_Что_делаем;
   TextWidget _Текст_Работать_по_Стахановски;
 
+  TextWidget _Текст_Где_скачать_GCal;
+  UrlImageTextButton _Адрес_GCal;
+
   FileNameEditLine _Поле_ввода_Входной_файл;
   FileNameEditLine _Поле_ввода_Выходной_файл;
   FileNameEditLine _Поле_ввода_Файл_словарь;
@@ -322,6 +340,7 @@ class Класс_Конвертилка_переводчик : VerticalLayout
   CheckBox _Галочка_кнопка_Удалять_служебные_строки;
   CheckBox _Галочка_кнопка_Удалять_пустые_дни;
   CheckBox _Галочка_кнопка_Удалять_пустые_дни_окончания_поста;
+  CheckBox _Галочка_кнопка_Удалять_комментарий_Экадаши;
 
   Action _Действие_Работаем_по_Стахановски;
   ImageTextButton _Кнопка_выполнения;
@@ -415,12 +434,13 @@ class Класс_Конвертилка_переводчик : VerticalLayout
     // великолепное удобство для регулярных выражений!
     auto выражение_день = ctRegex!r"^\s?([\d]{1,2})\s(\w{3,})\s([\d]{1,5})\s(\w{2,})(\s+)([\w\s()]+)(K|G)\s([\w-]+)(\s+)([\w-]+)([\s]*[*]?)";
     // выражения для служебных строк
-    auto выражение_служебная_строка    = ctRegex!r"((^-{70,})|(^\s?DATE)|(\d\d\w\d\d\s\d\d\w\d\d))";
-    auto выражение_окончание_поста     = ctRegex!r"Break\sfast\s";
+    auto выражение_служебная_строка               = ctRegex!r"((^-{70,})|(^\s?DATE)|(\d\d\w\d\d\s\d\d\w\d\d))";
+    auto выражение_окончание_поста                = ctRegex!r"Break\sfast\s";
     // подготавливаем для удаления строки из тире и GCal
-    auto выражение_для_чистки_месяца   = ctRegex!r"\s+GCal\s\d\d";
-    auto выражение_для_чистки_солнца   = ctRegex!r"\s?-{3,}\s?";
-    auto выражение_месяц_ли_это        = ctRegex!r"\,\sGaurabda\s";
+    auto выражение_для_чистки_Месяца              = ctRegex!r"\s+GCal\s\d\d";
+    auto выражение_для_чистки_Солнца              = ctRegex!r"\s?-{3,}\s?";
+    auto выражение_месяц_ли_это                   = ctRegex!r"\,\sGaurabda\s";
+    auto выражение_для_чистки_комментария_Экадаши = ctRegex!r"\s\((not)?\s?suitable for fasting\)";
 
     // Чудо чудесное
     string Чудо_слов( Captures!(string) m )
@@ -437,6 +457,7 @@ class Класс_Конвертилка_переводчик : VerticalLayout
     bool Нужно_ли_удалять_служебные_строки           = _Галочка_кнопка_Удалять_служебные_строки.checked;
     bool Нужно_ли_удалять_пустые_дни                 = _Галочка_кнопка_Удалять_пустые_дни.checked;
     bool Нужно_ли_удалять_пустые_дни_окончания_поста = _Галочка_кнопка_Удалять_пустые_дни_окончания_поста.checked;
+    bool Нужно_ли_удалять_комментарий_Экадаши        = _Галочка_кнопка_Удалять_комментарий_Экадаши.checked;
 
     auto фразы = _Словарь_фраз.keys;
     фразы.sort!( "a.length > b.length" );
@@ -474,6 +495,11 @@ class Класс_Конвертилка_переводчик : VerticalLayout
             строка ~= "\t*"c;
           строка ~= "\n";
         }
+        // Удаляем, при желании комментрий к Экадаши - подходит для поста и не додходит для поста. Все равно есть еще символ звездочка и
+        // строка с именем Экадаши и явным упоминанием о посте!
+        if ( Нужно_ли_удалять_комментарий_Экадаши ) {
+          строка = replaceFirst( строка, выражение_для_чистки_комментария_Экадаши, ""c );
+        }
       } else {
         проверка_месяца = matchFirst( строка, выражение_месяц_ли_это );
         if ( проверка_месяца.captures.length > 0 ) {
@@ -501,9 +527,9 @@ class Класс_Конвертилка_переводчик : VerticalLayout
       // Можно указать номер версии программы GCal в колонтитулах книги при желании
       if ( Нужна_ли_табуляция ) {
         if ( вид_строки == Тип_строки.Месяц )
-          строка = replaceAll( строка, выражение_для_чистки_месяца, ""c );
+          строка = replaceAll( строка, выражение_для_чистки_Месяца, ""c );
         if ( вид_строки == Тип_строки.Солнце )
-          строка = replaceAll( строка, выражение_для_чистки_солнца, ""c );
+          строка = replaceAll( строка, выражение_для_чистки_Солнца, ""c );
       }
       
       // Переводим сначала фразы. Длительная операция, так как переводятся все имеющиеся фразы, не зависимо от того, встречаются ли они в строке или нет
@@ -681,6 +707,18 @@ class Класс_Основной_Виджет : FrameLayout
     
     _Конвертилка_переводчик._Выпадающий_список_Наряд_программы.selectedItemIndex = 1;
     
+    onAction = delegate( Widget source, const Action a )
+    {
+      switch ( a.id ) {
+      case Коды_действий.Код_действия_работаем_по_Стахановски :
+        return _Конвертилка_переводчик.Работаем_по_Стахановски( null );
+      case StandardAction.OpenUrl :
+        platform.openURL( a.stringParam );
+        return true;
+      default :
+        return false;
+      }
+    };
     // Сохраняем для примера. 
     // showChild(_cupPage.id, Visibility.Invisible, true);
     // backgroundImageId = "tx_fabric.tiled";
