@@ -85,7 +85,7 @@ class Класс_О_программе : VerticalLayout
     auto гл_Версия = new HorizontalLayout();
 
     гл_Версия.addChild( new TextWidget( "Версия"c,     UIString.fromId( "Версия"c ) ) );
-    гл_Версия.addChild( new TextWidget( "Номер версии"c, "1.0.2"d ).styleId( "POPUP_MENU" ) );
+    гл_Версия.addChild( new TextWidget( "Номер версии"c, "1.0.5"d ).styleId( "POPUP_MENU" ) );
 
     addChild( гл_Версия );
   
