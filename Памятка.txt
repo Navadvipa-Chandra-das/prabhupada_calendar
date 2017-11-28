@@ -36,3 +36,14 @@ git remote rename origin destination
 git pull prabhupada_calendar master
 # удаление файла из репозитория
 git rm test.txt
+
+Build 32bit version
+dub run --build=release --arch=x86_mscoff dlangide
+dub run --build=release --arch=x86 dlangide
+Build 64bit
+dub run --build=release --arch=x86_64 --compiler=ldc2
+
+git clone --recursive https://github.com/buggins/dlangui.git
+
+Порядок столбцов:
+дата, титхи, пакша, йога, накшатра, пост (звездочка)
