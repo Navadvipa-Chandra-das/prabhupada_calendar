@@ -30,3 +30,4 @@ bin/
 
 # Настройки для  DLangIDE
 *.settings
+*.autosave
