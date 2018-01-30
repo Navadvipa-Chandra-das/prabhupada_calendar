@@ -438,7 +438,7 @@ class Класс_Конвертилка_переводчик : VerticalLayout
     auto выражение_окончание_поста                = ctRegex!r"Break\sfast\s";
     // подготавливаем для удаления строки из тире и GCal
     auto выражение_для_чистки_Месяца              = ctRegex!r"\s+GCal\s\d\d";
-    auto выражение_для_чистки_Солнца              = ctRegex!r"\s?-{3,}\s?";
+    auto выражение_для_чистки_Солнца              = ctRegex!r" ?-{3,} ?";
     auto выражение_месяц_ли_это                   = ctRegex!r"\,\sGaurabda\s";
     auto выражение_для_чистки_комментария_Экадаши = ctRegex!r"\s\((not)?\s?suitable for fasting\)";
 
