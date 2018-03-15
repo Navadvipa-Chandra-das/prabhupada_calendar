@@ -3,6 +3,8 @@
 dub init ~/prg/D/Prabhupada/TestInit dlangui dlangide --format=sdl
 dub fetch dlangide && dub run --build=release dlangide
 
+
+
 // один раз
 git init
 git config --global user.email "navadwip@rambler.ru"

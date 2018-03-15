@@ -14,6 +14,7 @@ after = после
 LT = МВ
 DST = ЛВ
 Advent of Srimad Bhagavad-gita = Появление Шримад Бхагавад Гиты
+Appearance of Lord Sri Ramacandra = явление Господа Шри Рамачандры
 of Lord Nrsimhadeva = Господа Нрисимхадева
 of Lord Sri Krsna = Господа Шри Кришны
 The incorporation of ISKCON in New York = Основание ИСККОН в Нью Йорке
