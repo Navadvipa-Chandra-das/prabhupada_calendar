@@ -186,7 +186,6 @@ class Класс_Конвертилка_переводчик : VerticalLayout
     //_Кнопка_выполнения                = new ImageTextButton( "Кнопка выполнения", "dialog-ok-apply"c, "Есть работать по Стахановски!"c );
 
     _Текст_Где_скачать_GCal = new TextWidget( null, UIString.fromId( "Где_скачать_GCal"c ) );
-    //_Адрес_GCal = new UrlImageTextButton( null, "krishnadays.com"d,    "http://krishnadays.com/"c );
     _Адрес_GCal = new UrlImageTextButton( null, "krishnadays.com"d,    "krishnadays.com"c );
 
     auto гл_Входной_файл = new HorizontalLayout();
