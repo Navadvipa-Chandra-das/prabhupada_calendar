@@ -11,6 +11,6 @@
     "description": "Translates the text file is the result of the GCal (krishnadays.com) program on Russian language (or any other) and prepares the result for typesetting books",
     "homepage": "http://nizhnyaya-navadvipa.ru",
     "dependencies": {
-        "dlangui": ">=0.9.178"
+        "dlangui": ">=0.9.180"
     }
 }
